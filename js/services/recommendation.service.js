@@ -4,7 +4,7 @@ const gRecommendation = loadFromStorage('recommendationsDB') || {}
 
 function getRecommendations(onSuccess, queryParams = defaultParams) {
 
-    const { publisherId, appType, apiKey, sourceId, sourceType, sourceUrl, count } = queryParams
+    const { publisherId, appType, sourceId, sourceType, sourceUrl, count } = queryParams
     if (gRecommendation[count]) {
         onSuccess(gRecommendation[count])
     }
