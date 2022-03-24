@@ -2,6 +2,8 @@ function onInit() {
     getRecommendations(renderRecommmendations)
 }
 
+
+//TODO: handle broken images
 function renderRecommmendations(recommendations) {
     console.log(recommendations)
     const strHTMLS = recommendations.list.map(recommendation => {
@@ -11,18 +13,19 @@ function renderRecommmendations(recommendations) {
                         <img src="${thumbnail[0].url}"/>
                     </div>
                     <h4>${name}</h4>
-                    ${isSponsored(origin) && '<h6>' + branding + '</h6>'}
+                    ${origin === 'sponsored' && '<h6>' + branding + '</h6>'}
                 </div>`
     }).join('')
     document.querySelector('.recommendation-container').innerHTML = strHTMLS;
 }
 
 function onOpenRecommendation(url, recommendationType) {
-    if (isSponsored(recommendationType)) {
-        window.open(url, '_blank');
-    }
-}
 
-function isSponsored(recommendationType) {
-    return recommendationType === 'sponsored'
+    switch (recommendationType) {
+        case 'sponsored': {
+            window.open(url, '_blank');
+            break;
+        }
+    }
+    
 }
