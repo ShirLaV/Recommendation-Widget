@@ -5,5 +5,5 @@ const defaultParams = {
     sourceId: '214321562187',
     sourceType: 'video',
     sourceUrl: 'http://www.site.com/videos/214321562187.html',
-    count: 8,
+    count: 9,
 }
