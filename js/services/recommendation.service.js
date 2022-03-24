@@ -23,10 +23,10 @@ function getRecommendations(onSuccess, queryParams = defaultParams) {
                 saveToStorage('recommendationsDB', gRecommendation)
                 onSuccess(res)
             }
+            //TODO: handle error
         }
         xhr.open('GET', url, true);
         xhr.send();
 
-        //TODO: handle error
     }
 }
