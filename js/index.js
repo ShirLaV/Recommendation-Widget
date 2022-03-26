@@ -2,21 +2,19 @@ function onInit() {
     getRecommendations(renderRecommmendations)
 }
 
-
-//TODO: handle broken images
 function renderRecommmendations(recommendations) {
-    console.log(recommendations)
+    console.log(recommendations);
     const strHTMLS = recommendations.list.map(recommendation => {
-        const { thumbnail, url, origin, name, branding, id } = recommendation
+        const { thumbnail, url, origin, name, branding, id } = recommendation;
 
         return `<div class="recommendation-card flex column"  onclick="onOpenRecommendation('${url}', '${origin}')">
                     <div>
                         <img src="${thumbnail[0].url}" onerror="this.src='https://picsum.photos/400/200?random=${id}'"/>
                     </div>
                     <h4>${name}</h4>
-                    ${origin === 'sponsored' && '<h6>' + branding + '</h6>'}
+                    ${origin === 'sponsored' && "<h6>" + branding + "</h6>"}
                 </div>`
-    }).join('')
+    }).join('');
     document.querySelector('.recommendation-container').innerHTML = strHTMLS;
 }
 
@@ -27,6 +25,8 @@ function onOpenRecommendation(url, recommendationType) {
             window.open(url, '_blank');
             break;
         }
+        default:
+            console.warn(`unknown recommendationType, ${recommendationType}`);
     }
 
 }

@@ -1,27 +1,32 @@
 'use strict'
 
-const gRecommendation = loadFromStorage('recommendationsDB') || {}
+'use strict';
 
-function getRecommendations(onSuccess, queryParams = defaultParams) {
+const gRecommendation = loadFromStorage('recommendationsDB') || {};
+const BASE_URL = `http://api.taboola.com/1.0/json/${publisherId}/recommendations`;
 
-    const { publisherId, appType, sourceId, sourceType, sourceUrl, count } = queryParams
+function getRecommendations(onSuccess, _queryParams = DEFAULT_PARAMS) {
+
+    const queryParams = isValidQueryObject(_queryParams)
+        ? _queryParams
+        : new URLSearchParams(_queryParams);
+
+    const count = queryParams.get('count');
+
     if (gRecommendation[count]) {
         onSuccess(gRecommendation[count])
     }
 
     else {
+        const url = `${BASE_URL}.${API_METHOD_ENDPOINTS.get}?${queryParams}`;
 
-        
-        const url = `http://api.taboola.com/1.0/json/${publisherId}/recommendations.get?app.type=${appType}&app.apikey=${apiKey}&count=${count}&source.type=${sourceType}&source.id=${sourceId}&source.url=${sourceUrl}`
-        
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                const res = JSON.parse(xhr.responseText)
-                console.log(res)
-                gRecommendation[count] = res
-                saveToStorage('recommendationsDB', gRecommendation)
-                onSuccess(res)
+                const res = JSON.parse(xhr.responseText);
+                gRecommendation[count] = res;
+                saveToStorage('recommendationsDB', gRecommendation);
+                onSuccess(res);
             }
             //TODO: handle error
         }
