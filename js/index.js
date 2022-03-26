@@ -3,7 +3,6 @@ function onInit() {
 }
 
 function renderRecommmendations(recommendations) {
-    console.log(recommendations);
     const strHTMLS = recommendations.list.map(recommendation => {
         const { thumbnail, url, origin, name, branding, id } = recommendation;
 
@@ -23,6 +22,10 @@ function onOpenRecommendation(url, recommendationType) {
     switch (recommendationType) {
         case 'sponsored': {
             window.open(url, '_blank');
+            break;
+        }
+        case 'organic': {
+            window.open(url, '_self');
             break;
         }
         default:
