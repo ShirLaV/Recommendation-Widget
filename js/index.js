@@ -1,3 +1,5 @@
+'use strict';
+
 function onInit() {
     getRecommendations(renderRecommmendations)
 }
@@ -5,7 +7,6 @@ function onInit() {
 function renderRecommmendations(recommendations) {
     const strHTMLS = recommendations.list.map(recommendation => {
         const { thumbnail, url, origin, name, branding, id } = recommendation;
-
         return `<div class="recommendation-card flex column"  onclick="onOpenRecommendation('${url}', '${origin}')">
                     <div>
                         <img src="${thumbnail[0].url}" onerror="this.src='https://picsum.photos/400/200?random=${id}'"/>
@@ -18,7 +19,6 @@ function renderRecommmendations(recommendations) {
 }
 
 function onOpenRecommendation(url, recommendationType) {
-
     switch (recommendationType) {
         case 'sponsored': {
             window.open(url, '_blank');
@@ -31,5 +31,4 @@ function onOpenRecommendation(url, recommendationType) {
         default:
             console.warn(`unknown recommendationType, ${recommendationType}`);
     }
-
 }

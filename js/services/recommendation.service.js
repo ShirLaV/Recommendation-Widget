@@ -1,7 +1,5 @@
 'use strict'
 
-'use strict';
-
 const gRecommendation = loadFromStorage('recommendationsDB') || {};
 const BASE_URL = `http://api.taboola.com/1.0/json/${publisherId}/recommendations`;
 
@@ -18,9 +16,9 @@ function getRecommendations(onSuccess, _queryParams = DEFAULT_PARAMS) {
     }
 
     else {
-        const url = `${BASE_URL}.${API_METHOD_ENDPOINTS.get}?${queryParams}`;
+        const url = `${BASE_URL}.get?${queryParams}`;
 
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 const res = JSON.parse(xhr.responseText);
