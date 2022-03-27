@@ -8,6 +8,7 @@ export const recommendationService = {
 }
 
 function getRecommendations(onSuccess, onFailure, _queryParams = DEFAULT_PARAMS) {
+
     const queryParams = queryParamsHelper.isValidQueryObject(_queryParams)
         ? _queryParams
         : new URLSearchParams(_queryParams);

@@ -1,8 +1,8 @@
-import { expect, jest } from '@jest/globals';
+import { expect } from '@jest/globals';
 import { recommendationController } from './recommandation.controller.js';
-import { recommendationService } from './services/recommendation.service.js'
+// import { recommendationService } from './services/recommendation.service.js'
 
-describe('recommendation controller tests', () => {
+describe('Recommendation controller tests', () => {
 
     document.body.innerHTML = `<section class="recommendation-widget">
         <header>
@@ -98,12 +98,12 @@ describe('recommendation controller tests', () => {
 
     beforeEach(() => { recommendationController.renderRecommmendations(mockData) })
 
-    test('render recommendation cards in recommendations container', () => {
+    test('Render recommendation cards in recommendations container', () => {
         const elRecommandaionContainer = document.querySelector('.recommendation-container')
         expect(elRecommandaionContainer.childElementCount).toBe(4)
     })
 
-    test('render recommendaion\'s advertiser\'s name only if sponsored', () => {
+    test('Render recommendaion\'s advertiser\'s name only if sponsored', () => {
         const elSponsoredAdvertiserName = document.querySelector('.recommendation-card:first-child h6')
         expect(elSponsoredAdvertiserName).toBeTruthy()
         const elOrganicAdvertiserName = document.querySelector('.recommendation-card:nth-child(2) h6')

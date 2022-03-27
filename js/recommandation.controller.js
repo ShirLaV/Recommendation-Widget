@@ -17,12 +17,12 @@ function onInit() {
 function renderRecommmendations(recommendations) {
     const strHTMLS = recommendations.list.map(recommendation => {
         const { thumbnail, url, origin, name, branding, id } = recommendation;
-        return `<a  class="recommendation-card flex column"  href="${url}" target=${origin === 'sponsored' ? "_blank" : "_self" }>
+        return `<a  class="recommendation-card flex column"  href="${url}" target=${isSponsored(origin) ? "_blank" : "_self" }>
                         <div>
                             <img src="${thumbnail[0].url}" onerror="this.src='https://picsum.photos/400/200?random=${id}'"/>
                         </div>
                         <h4>${name}</h4>
-                        ${origin === 'sponsored' && "<h6>" + branding + "</h6>"}
+                        ${isSponsored(origin) && "<h6>" + branding + "</h6>"}
                 </a>`
     }).join('');
 
@@ -31,6 +31,10 @@ function renderRecommmendations(recommendations) {
 
 function renderError() {
     document.querySelector('.recommendation-container').innerHTML = '<p>Something went wrong...</p>'
+}
+
+function isSponsored(recommendationType) {
+    return recommendationType === 'sponsored'
 }
 
 
