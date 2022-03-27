@@ -1,0 +1,30 @@
+{
+  "name": "recommandation-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test":  "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShirLaV/Recommendation-Widget.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShirLaV/Recommendation-Widget/issues"
+  },
+  "type": "module",
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "homepage": "https://github.com/ShirLaV/Recommendation-Widget#readme",
+  "dependencies": {
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11"
+  }
+}
