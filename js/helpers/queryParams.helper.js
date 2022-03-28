@@ -3,5 +3,5 @@ export const queryParamsHelper = {
 }
 
 function isValidQueryObject(obj) {
-    return obj instanceof URLSearchParams;
+    return obj instanceof URLSearchParams
 }

@@ -11,15 +11,15 @@ function getRecommendations(onSuccess, onFailure, _queryParams = DEFAULT_PARAMS)
 
     const queryParams = queryParamsHelper.isValidQueryObject(_queryParams)
         ? _queryParams
-        : new URLSearchParams(_queryParams);
+        : new URLSearchParams(_queryParams)
 
-    const url = `${BASE_URL}.get?${queryParams}`;
+    const url = `${BASE_URL}.get?${queryParams}`
 
-    const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest()
     xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) onSuccess(JSON.parse(xhr.responseText));
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) onSuccess(JSON.parse(xhr.responseText))
         else if (xhr.status === 400) onFailure()
     }
-    xhr.open('GET', url, true);
-    xhr.send();
+    xhr.open('GET', url, true)
+    xhr.send()
 }

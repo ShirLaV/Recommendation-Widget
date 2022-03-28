@@ -1,6 +1,5 @@
-import { expect } from '@jest/globals';
-import { recommendationController } from './recommandation.controller.js';
-// import { recommendationService } from './services/recommendation.service.js'
+import { expect } from '@jest/globals'
+import { recommendationController } from './recommandation.controller.js'
 
 describe('Recommendation controller tests', () => {
 

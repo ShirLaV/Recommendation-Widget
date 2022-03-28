@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 import { apiKey } from './api.key.js'
 
 //default values for API:
-const _publisherId = 'taboola-templates';
+const _publisherId = 'taboola-templates'
 
 export const DEFAULT_PARAMS = new URLSearchParams({
     'app.type': 'desktop',
@@ -13,7 +13,7 @@ export const DEFAULT_PARAMS = new URLSearchParams({
     'count': 9,
 })
 
-export const BASE_URL = `http://api.taboola.com/1.0/json/${_publisherId}/recommendations`;
+export const BASE_URL = `http://api.taboola.com/1.0/json/${_publisherId}/recommendations`
 
 
 
