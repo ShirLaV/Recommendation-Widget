@@ -18,7 +18,7 @@ function renderRecommmendations(recommendations) {
     const strHTMLS = recommendations.list.map(recommendation => {
         const { thumbnail, url, origin, name, branding, id } = recommendation
         return `<a  class="recommendation-card flex column"  href="${url}" target=${isSponsored(origin) ? "_blank" : "_self"}>
-                       "<div>
+                       <div>
                             <img src="${thumbnail[0].url}" onerror="this.src='https://picsum.photos/400/200?random=${id}'"/>
                         </div>
                         <h4>${name}</h4>
